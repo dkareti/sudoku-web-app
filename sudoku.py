@@ -34,3 +34,39 @@ def is_valid(grid, row: int, col: int, num: int) -> bool:
                 return False
     return True
 
+def solve_grid(grid):
+    #implement recursion
+    for row in range(9):
+        for col in range(9):
+            if grid[row][col] == 0:
+                nums = list(range(1, 10))
+                random.shuffle(nums)
+                for num in nums:
+                    if is_valid(grid, row, col, num):
+                        grid[row][col] = num
+                        if solve_grid(grid):
+                            #   #   #   #   #   #   
+                            # check to see if the entire 
+                            #  puzzle can be solved by adding
+                            #  this value.
+                            #   #   #   #   #   #   
+                            return True
+                        grid[row][col] = 0
+                return False
+    return True
+
+def generate_full_grid():
+    #   #   #   #   #   #   
+    # Generates a valid 9x9 sudoku board, completely filled
+    #   #   #   #   #   #   
+    grid = [[0 for _ in range(9)] for _ in range(9)]
+    solve_grid(grid)
+    return grid
+
+###################################
+# With a complete 9x9 sudoku board
+#  we need to remove numbers based
+#  on the user's specified difficulty 
+#  level
+###################################
+
