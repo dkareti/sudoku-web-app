@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Sudoku App
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1>
+            Welcome to the Sudoku Generator!
+        </h1>
+        <p>
+            You can choose the desired difficulty
+            and play a sudoku game. 
+        </p>
+        <form method="POST">
+            <label for="difficulty">Select Difficulty:</label>
+            <select name="difficulty" id="difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            <button type="submit">Generate Puzzle</button>
+        </form>
+    </body>
+</html>

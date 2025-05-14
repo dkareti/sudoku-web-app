@@ -70,3 +70,24 @@ def generate_full_grid():
 #  level
 ###################################
 
+def remove_numbers(grid, difficulty):
+    holes_by_lvl = {
+        'Easy': 30,
+        'Medium': 40,
+        'Hard': 50
+    }
+
+    #the default difficulty is Easy
+    holes = holes_by_lvl.get(difficulty, 30)
+    puzzle = copy.deepcopy(grid)
+
+    removed = 0
+    while removed < holes:
+        row = random.randint(0, 8)
+        col = random.randint(0, 8)
+        if puzzle[row][col] != 0:
+            puzzle[row][col] = 0
+            removed += 1
+    
+    return puzzle
+
